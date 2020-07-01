@@ -48,5 +48,8 @@ formEl.addEventListener("submit", function (e) {
 
   request.open(formEl.method, formEl.action);
   request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  request.setRequestHeader('Access-Control-Allow-Origin','*');
+  request.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, HEAD');
   request.send(getFormDataString(formEl));
 });
+
