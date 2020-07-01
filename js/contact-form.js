@@ -1,61 +1,52 @@
-$(document).ready(() => {
-    const contactForm = $(".contact-form");
-    const contactFormMethod = contactForm.attr("method");
-    const contactFormEndpoint = contactForm.attr("action");
-  
-  
-    function displaySubmitting(submitBtn, defaultText, doSubmit) {
-      // const defaultText = submitBtn.text();
-      if (doSubmit) {
-        submitBtn.addClass("disabled");
-        submitBtn.html(
-          "<i class='fa fa-spin fa-spinner'></i> Sending..."
-        );
-      } else {
-        submitBtn.removeClass("disabled");
-        submitBtn.html(defaultText);
-      }
-    }
-  
-    contactForm.submit(function(e) {
-      e.preventDefault();
-      const contactFormSubmitBtn = contactForm.find("[type='submit']");
-      const contactFormSubmitBtnTxt = contactFormSubmitBtn.text();
-      const contactFormData = contactForm.serialize();
-      // const thisForm = $(this);
-      displaySubmitting(contactFormSubmitBtn, '', true);
-      $.ajax({
-        url: contactFormEndpoint,
-        method: contactFormMethod,
-        data: contactFormData,
-        success: function(data) {
-          // thisForm[0].reset();
-          contactForm[0].reset();
-          $.alert({
-            title: "Success!",
-            content: data.message,
-            theme: "supervan"
-          });
-          setTimeout(() => {
-            displaySubmitting(contactFormSubmitBtn, contactFormSubmitBtnTxt, false);
-          }, 500);
-        },
-        error: function(error) {
-          const jsonData = error.responseJSON;
-          let msg = "";
-          $.each(jsonData, (key, value) => {
-            msg += key + ": " + value[0].message + "<br>";
-          });
-          $.alert({
-            title: "Oops!",
-            content: msg,
-            theme: "modern"
-          });
-          console.log("Error when saving contact form => ", error);
-          setTimeout(() => {
-            displaySubmitting(contactFormSubmitBtn, contactFormSubmitBtnTxt, false);
-          }, 500);
-        }
-      });
-    });
-  });
+// Helper function to get form data in the supported format
+function getFormDataString(formEl) {
+  var formData = new FormData(formEl),
+      data = [];
+
+  for (var keyValue of formData) {
+    data.push(encodeURIComponent(keyValue[0]) + "=" + encodeURIComponent(keyValue[1]));
+  }
+
+  return data.join("&");
+}
+
+// Fetch the form element
+var formEl = document.getElementById("contact-form");
+
+// Override the submit event
+formEl.addEventListener("submit", function (e) {
+  // if(document.getElementById('name').value.length === 0){
+  //   alert('Name 필드의 값이 누락 되었습니다');
+  //   e.preventDefault();
+  // }
+
+  // if (grecaptcha) {
+  //   var recaptchaResponse = grecaptcha.getResponse();
+  //   if (!recaptchaResponse) { // reCAPTCHA not clicked yet
+  //     return false;
+  //   }
+  // }
+
+  console.log("\nforme1.method: ", formEl.method, formEl.action);
+  var request = new XMLHttpRequest();
+  if(!request) {
+    alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
+    return false;
+  }
+  else {
+    console.log("\nrequest status is : ", request.status);
+  }
+
+
+  // request.addEventListener("load", function () {
+    
+  //   if (request.status === 302) { // CloudCannon redirects on success
+  //     // It worked
+  //     console.log("\nSent Message\n");
+  //   }
+  // });
+
+  request.open(formEl.method, formEl.action);
+  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  request.send(getFormDataString(formEl));
+});
