@@ -1,7 +1,7 @@
 # ----
 # Site
 
-title: Frisco Template
+title: Hyuna Cho
 url: "https://Hannah37.github.io"
 baseurl: ""
 google_analytics_key:
@@ -16,7 +16,7 @@ author:
   email: hannah3767@gmail.com
   twitter: # twitter username without the @ symbol
 social:
-  name: Frisco Template
+  name: Hyuna Cho
   links:
     - https://github.com/CloudCannon/frisco-jekyll-template
 
