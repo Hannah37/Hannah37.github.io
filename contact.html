@@ -20,8 +20,8 @@ image: https://source.unsplash.com/WNAO036c6FM/2000x1322?a=.png
 
 <section class="pad">
 	<div class="text-container contact-box">
-		<form action="{{ site.baseurl }}/contact-success/" method="get" class="contact-form">
-			<input type="hidden" name="_to" value="hannah3767@gmail.com">
+		<form action="{{ site.baseurl }}/contact-success/" method="POST" class="contact-form">
+			<!-- <input type="hidden" name="_to" value="hannah3767@gmail.com"> -->
 			<input type="text" name="_gotcha" style="display: none;">
 
 			<label for="name">Name</label>
@@ -36,6 +36,7 @@ image: https://source.unsplash.com/WNAO036c6FM/2000x1322?a=.png
 			<input type="submit" value="Send Message">
 		</form>
 
+		
 		<div class="contact-details">
 			<h3>Address</h3>
 			<address><a target="_blank" href="https://www.google.com/maps/place/{{ page.map.address | url_encode }}">{{ page.map.address | replace: ", ", ", <br>" }}</a></address>
