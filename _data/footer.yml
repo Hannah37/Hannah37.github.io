@@ -1,0 +1,12 @@
+left_links:
+  - name: Blog
+    link: /blog/
+  - name: About
+    link: /about/
+  - name: Contact
+    link: /contact/
+right_links:
+  - name:
+    link: https://www.instagram.com/hyuna_cho37/
+    social_icon: Instagram
+    new_window: true
