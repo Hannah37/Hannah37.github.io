@@ -6,7 +6,7 @@ url: "https://Hannah37.github.io"
 baseurl: ""
 google_analytics_key:
 google_maps_javascript_api_key:
-disqus_shortname:
+disqus_shortname: Hannah37
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /siteicon.png
@@ -114,3 +114,5 @@ social_icons:
 _comments:
   description: Text shown when sharing on social media
   blurb: Short bio or description of this person
+
+
