@@ -71,6 +71,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+      comments: true
       _options:
         image:
           width: 2000
