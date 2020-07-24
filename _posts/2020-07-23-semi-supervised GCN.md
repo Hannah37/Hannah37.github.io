@@ -3,7 +3,8 @@ title: Semi-Supervised Classification with Graph Convolutional Networks
 date: 2020-07-23
 description: Published as a conference paper at ICLR 2017
 categories:
-    - Graph Convolutional Network, Semi-Supervised Learning
+    - Graph Convolutional Network
+    - Semi-Supervised Learning
 image: 
 
 ---
