@@ -46,9 +46,9 @@ graph G = (V, E)의 인접행렬 A와 각 노드의 feature X가 주어졌을 �
 
 
 방금 시각화했던 과정을 수식으로 정리해보겠습니다. 
-H: 노드의 초기 feature로는 citation network에서는 각 문서의 bag-of-words[^1]  vector를 사용했고, knowledge graph data에서는 entity와 entity를 연결하는 relation이 있을 때 relatio에 대한 one hot vector를 사용했습니다.
+H: 노드의 초기 feature로는 citation network에서는 각 문서의 bag-of-words[^1]  vector를 사용했고, knowledge graph data에서는 entity와 entity를 연결하는 relation이 있을 때 relation에 대한 one hot vector를 사용했습니다.
 
-W: 이 식을 행렬연산을 해보면 weight의 각각의 columln이 하나의 filter로 볼 수 있는데, weight의 각 column이 모든 노드에 똑같이 적용되기 때문에 CNN에서 filter로 weight sharing을 하듯이 마찬가지로 그래프에서 weight sharing을 할 수 있습니다.
+W: 이 식을 행렬연산을 해보면 weight의 각각의 column이 하나의 filter로 볼 수 있는데, weight의 각 column이 모든 노드에 똑같이 적용되기 때문에 CNN에서 filter로 weight sharing을 하듯이 마찬가지로 그래프에서 weight sharing을 할 수 있습니다.
 
 따라서 GCN은 각 노드마다 자기자신을 포함한 이웃 노드들의 feature의 가중합으로 표현되는 것을 알 수 있습니다. 
 
