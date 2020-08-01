@@ -30,9 +30,11 @@
 	$("a[href*=\\#]").on("click", function (event) {
 		if(this.pathname === window.location.pathname) {
 			event.preventDefault();
-
+			
+			var targetId = this.hash.replace(/#/, '')
+			var elem = document.getElementById(targetId)
 			$("html, body").animate({
-				scrollTop: $(this.hash).offset().top
+				scrollTop: $(elem).offset().top
 			}, 500);
 		}
 	});
