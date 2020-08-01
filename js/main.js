@@ -33,8 +33,17 @@
 			
 			var targetId = this.hash.replace(/#/, '')
 			var elem = document.getElementById(targetId)
+			var targetOffset = $(elem).offset().top
+			var sourceOffset = $(document).scrollTop()
+
+			// if going up, take account navbar
+			if (targetOffset < sourceOffset) {
+				var navbarHeight = $('header').outerHeight()
+				targetOffset = targetOffset - navbarHeight
+			}
+
 			$("html, body").animate({
-				scrollTop: $(elem).offset().top
+				scrollTop: targetOffset
 			}, 500);
 		}
 	});
