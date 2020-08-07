@@ -11,6 +11,7 @@ image:
 
 ![슬라이드2](https://user-images.githubusercontent.com/33539468/88361872-80afc900-cdb5-11ea-9085-4d55d7c80752.PNG)
 
+Semi-Supervised Classification with Graph Convolutional Networks[^1] 논문을 정리, 요약한 글입니다.제가 잘못 이해한 부분이 있거나 오타, 오역 등의 의견은 댓글과 메일로 남겨주시면 감사하겠습니다.^^
 
 제목에서 제시된 두 가지 키워드를 먼저 살펴보겠습니다. 
 Graph Convolutional Network는 기존에 이미지에 적용하던 convolution 연산을 그래프에 적용하여, CNN에서 filter의 weight sharing 작용과 유사하게 그래프에서도 같은 weight값이 여러 노드에 적용되어 노드의 분류 문제를 수행하는 모델입니다. 
@@ -46,7 +47,7 @@ graph G = (V, E)의 인접행렬 A와 각 노드의 feature X가 주어졌을 �
 
 
 방금 시각화했던 과정을 수식으로 정리해보겠습니다. 
-H: 노드의 초기 feature로는 citation network에서는 각 문서의 bag-of-words[^1]  vector를 사용했고, knowledge graph data에서는 entity와 entity를 연결하는 relation이 있을 때 relation에 대한 one hot vector를 사용했습니다.
+H: 노드의 초기 feature로는 citation network에서는 각 문서의 bag-of-words[^2]  vector를 사용했고, knowledge graph data에서는 entity와 entity를 연결하는 relation이 있을 때 relation에 대한 one hot vector를 사용했습니다.
 
 W: 이 식을 행렬연산을 해보면 weight의 각각의 column이 하나의 filter로 볼 수 있는데, weight의 각 column이 모든 노드에 똑같이 적용되기 때문에 CNN에서 filter로 weight sharing을 하듯이 마찬가지로 그래프에서 weight sharing을 할 수 있습니다.
 
@@ -152,4 +153,7 @@ full batch gradient descent를 쓰면 dataset 크기에 선형적으로 메모�
 [4] <https://baekyeongmin.github.io/paper-review/gcn-review/>
 
 
-[^1]: Bag of Words란 단어들의 순서는 전혀 고려하지 않고, 단어들의 출현 빈도(frequency)에만 집중하는 텍스트 데이터의 수치화 표현 방법입니다.
+## Footnote
+[^1]: <https://arxiv.org/abs/1609.02907>
+
+[^2]: Bag of Words란 단어들의 순서는 전혀 고려하지 않고, 단어들의 출현 빈도(frequency)에만 집중하는 텍스트 데이터의 수치화 표현 방법입니다.
