@@ -30,9 +30,20 @@
 	$("a[href*=\\#]").on("click", function (event) {
 		if(this.pathname === window.location.pathname) {
 			event.preventDefault();
+			
+			var targetId = this.hash.replace(/#/, '')
+			var elem = document.getElementById(targetId)
+			var targetOffset = $(elem).offset().top
+			var sourceOffset = $(document).scrollTop()
+
+			// if going up, take account navbar
+			if (targetOffset < sourceOffset) {
+				var navbarHeight = $('header').outerHeight()
+				targetOffset = targetOffset - navbarHeight
+			}
 
 			$("html, body").animate({
-				scrollTop: $(this.hash).offset().top
+				scrollTop: targetOffset
 			}, 500);
 		}
 	});
